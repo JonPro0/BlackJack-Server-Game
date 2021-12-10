@@ -13,7 +13,13 @@ document.querySelector('#message-form').addEventListener('submit', (e) => {
 
     
 
-    socket.emit('sendMessage', msg)
+    socket.emit('sendMessage', msg, (error) => {
+        if(error) {
+            return console.log(error)
+        }
+
+        console.log('Message delivered!')
+    })
 })
 
 document.querySelector('#send-location').addEventListener('click', () => {
