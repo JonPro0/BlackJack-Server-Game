@@ -8,8 +8,7 @@ const $sendLocationButton = document.querySelector('#send-location')
 const $messages = document.querySelector('#messages')
 
 //Templates
-const messageTemplate = document.querySelector('#message-template').innerHTML
-
+const messageTemplate = document.querySelector('#message-template').innerHTML 
 const sidebarTemplate = document.querySelector('#sidebar-template').innerHTML
 
 //Options
@@ -27,7 +26,7 @@ socket.on('message', (message) => {
 
 })
 
-socket.on('roomData', (room, users) => {
+socket.on('roomData', ({room, users}) => {
     const html = Mustache.render(sidebarTemplate, {
         room,
         users
