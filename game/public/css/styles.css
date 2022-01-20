@@ -213,7 +213,7 @@ button:disabled {
     height: 180px;
     text-align: center;
     margin: auto;
-    margin-top: 8%;
+    margin-top: 5%;
     border-width: 2px;
     border-style: solid;
     border-color: #0070CC;
@@ -270,7 +270,7 @@ button:disabled {
     height: 100%;
     width: 23%;
     border: 2px solid #0070CC;
-    margin-left: 25%;
+    margin-left: 26%;
 }
 
 .player2 {
