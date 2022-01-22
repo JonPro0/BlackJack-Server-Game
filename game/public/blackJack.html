@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlackJack</title>
+    <title>Zelle's BlackJack</title>
     <link rel="stylesheet" href="css/styles.css">   
-
+    <link rel="icon" href="img/favicongreen.png">
+    
 </head>
-<body>
+<body class="blackJack_body">
+    <script src="/js/blackjack.js"></script>
     <h2>BlackJack</h2>
     <div class="cardDealer">
         <h3>Kartengeber</h3>
@@ -19,6 +21,9 @@
         <p>Karte 5</p>
 
         <div class="score">Score</div>
+    </div>
+    <div class="createCard" >
+        <button class="hit" onclick="fCreateCard()">Hit</button>
     </div>
     <div class="player3and4">
         <div class="player3">

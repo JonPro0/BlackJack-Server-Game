@@ -208,6 +208,11 @@ button:disabled {
     background-color: #05365e;
 }
 
+.blackJack_body {
+    background-color: #193c2b;
+    color:#eeeeee;
+}
+
 .cardDealer {
     width: 46%;
     height: 180px;

@@ -4,7 +4,21 @@ const cards = ["Ace of Club", "2 of Club", "3 of Club", "4 of Club", "5 of Club"
 "Ace of Diamond", "2 of Diamond", "3 of Diamond", "4 of Diamond", "5 of Diamond", "6 of Diamond", "7 of Diamond", "8 of Diamond", "9 of Diamond", "10 of Diamond", "Jack of Diamond", "Queen of Diamond", "King of Diamond",
 ]
 
-const createCard = function fCreateCard() {
-    let card = Math.random
-    console.log(card)
+const storingcards = []
+
+function fCreateCard() {
+    let card = Math.round((Math.random() * 52))
+    storingcards.push(card)
+    while(alreadyexists(card)) {
+        card = Math.round((Math.random() * 52))
+    }
+    console.log(cards[card])
+}
+
+function alreadyexists(card) {
+    for (let i = 0; i < storingcards.length; i++) {
+        if(card == storingcards[i])
+        return true
+    }
+    return false
 }
