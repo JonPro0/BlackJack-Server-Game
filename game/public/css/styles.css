@@ -201,7 +201,8 @@ button:disabled {
 
 .rulesButton {
     background-color: #0070CC;
-    margin-top: 20%;
+    margin-top: 10%;
+    width: 100%;
 }
 
 .rulesButton:hover {
@@ -283,4 +284,23 @@ button:disabled {
     width: 23%;
     border: 2px solid #0070CC;
     margin-left: 2%;
+}
+
+.rules_h1 {
+    display: flex;
+    justify-content: center;
+}
+
+.ziel {
+    border: 2px solid #0070CC;
+    margin-right: 20%;
+    margin-left: 20%;
+}
+
+.mechanics {
+    border: 2px solid #0070CC;
+    margin-top: 2%;
+    margin-right: 20%;
+    margin-left: 20%;
+    padding-left: 2%;
 }
