@@ -220,9 +220,7 @@ button:disabled {
     text-align: center;
     margin: auto;
     margin-top: 5%;
-    border-width: 2px;
-    border-style: solid;
-    border-color: #0070CC;
+    border: 2px solid #cca31d;
     font-size: 20px;
 }
 
@@ -231,6 +229,7 @@ button:disabled {
     margin-left: 69%;
     margin-top: -28px;
     border: 1px solid #289b61;
+    border-width: 30%;
 }
 
 .player3and4 {
@@ -245,7 +244,7 @@ button:disabled {
 .player3 {
     height: 100%;
     width: 23%;
-    border: 2px solid #0070CC;
+    border: 2px solid #cca31d;
     margin-left: 1%;
 }
 
@@ -253,11 +252,12 @@ button:disabled {
     height: 100%;
     width: 23%;
     margin-left: 52%;
-    border: 2px solid #0070CC;
+    border: 2px solid #cca31d;
 }
 
 .playersScore {
     width: 40%;
+    height: 12%;
     margin-left: 59%;
     margin-top: 23px;
     border: 1px solid #289b61;
@@ -275,14 +275,14 @@ button:disabled {
 .player1 {
     height: 100%;
     width: 23%;
-    border: 2px solid #0070CC;
+    border: 2px solid #cca31d;
     margin-left: 26%;
 }
 
 .player2 {
     height: 100%;
     width: 23%;
-    border: 2px solid #0070CC;
+    border: 2px solid #cca31d;
     margin-left: 2%;
 }
 
@@ -304,3 +304,18 @@ button:disabled {
     margin-left: 20%;
     padding-left: 2%;
 }
+
+.values {
+    border: 2px solid #0070CC;
+    margin-left: 20%;
+    margin-right: 20%;
+    display: flex;
+    flex-direction: row;
+    font-size: larger;
+}
+
+.Karte {
+    margin-left: 20%;
+    margin-right: 30%;
+}
+
