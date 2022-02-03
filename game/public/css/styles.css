@@ -103,15 +103,23 @@ button:disabled {
 
 /* Chat styles */
 
-.chat__main {
+.game__all {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     max-height: 100vh;
 }
 
+.game__BlackJack {
+    background-color: #193c2b;
+    height: 70%;
+    flex-shrink: 0;
+    width: 100%;
+}
+
 .chat__messages {
     flex-grow: 1;
+    height: 30%;
     padding: 24px 24px 0 24px;
     overflow-y: scroll;
 }
@@ -256,10 +264,11 @@ button:disabled {
 }
 
 .playersScore {
-    width: 40%;
+    width: 35%;
     height: 12%;
-    margin-left: 59%;
-    margin-top: 23px;
+    margin-left: 39%;
+   
+    margin-top: 110px;
     border: 1px solid #289b61;
 }
 
@@ -319,3 +328,38 @@ button:disabled {
     margin-right: 30%;
 }
 
+.botplayer1and2 {
+    height: 240px;
+    margin-bottom: 4%;
+    display: flex;
+    flex-direction:row;
+    text-align: center;
+    font-size: 20px;
+}
+
+.botplayer1_score    {
+    height: 100%;
+    display: flex;
+   flex-direction: row;
+    width: 23%;
+    border: 2px solid #cca31d;
+    margin-left: 26%;
+}
+
+.botplayer2 {
+    height: 100%;
+    width: 23%;
+    border: 2px solid #cca31d;
+    margin-left: 2%;
+}
+
+.botplayerScore {
+    width: 20%;
+    height: 10%;
+    border: 2px solid #0070CC;
+    text-align: center;
+    margin-bottom: -61%;
+    margin-left: 78%;
+
+    
+}

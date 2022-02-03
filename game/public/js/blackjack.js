@@ -1,4 +1,4 @@
- 
+ const showCard = document.querySelector('#pLayer1').innerHTML
 
 const cards = [{value : 11, word : "Ace of Club"}, {value : 2, word : "2 of Club"}, {value : 3, word : "3 of Club"}, {value : 4, word : "4 of Club"}, 
 {value : 5, word : "5 of Club"}, {value : 6, word : "6 of Club"}, {value : 7, word : "7 of Club"}, {value : 8, word : "8 of Club"}, {value : 9, word : "9 of Club"},
@@ -15,13 +15,26 @@ const cards = [{value : 11, word : "Ace of Club"}, {value : 2, word : "2 of Club
 
 let score = 0
 
+let isPlayeble = true
 
-function showCreatedCard() {
-
-    let card = Math.round((Math.random() * 51))
-    console.log(cards[card].word)
-    document.querySelector('#player1').innerHTML += `<p>${cards[card].word}</p>` 
-    score += cards[card].value
-    document.querySelector('#playerScore').innerHTML = score 
+const showCreatedCard = () => {
+    if(isPlayeble){
+        let card = Math.round((Math.random() * 51))
+        console.log(cards[card].word)
     
+    
+        document.querySelector('#player1').innerHTML += `<p>${cards[card].word}</p>` 
+        score += cards[card].value
+        document.querySelector('#playerScore').innerHTML = score 
+        if(score >= 21){
+            document.querySelector('#playerScore').innerHTML = score 
+            alert('Du hast verloren')
+        }
+    } 
+    
+    
+}
+
+const botTime = () => {
+    isPlayeble = false
 }
