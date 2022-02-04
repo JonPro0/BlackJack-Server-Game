@@ -115,13 +115,15 @@ button:disabled {
     height: 70%;
     flex-shrink: 0;
     width: 100%;
+    border: 5px solid #000000;
 }
 
 .chat__messages {
     flex-grow: 1;
     height: 30%;
     padding: 24px 24px 0 24px;
-    overflow-y: scroll;
+    overflow-y: auto;
+    
 }
 
 /* Message Styles */
@@ -152,6 +154,7 @@ button:disabled {
     flex-shrink: 0;
     margin-top: 16px;
     padding: 24px;
+    
 }
 
 .compose form {
@@ -195,12 +198,19 @@ button:disabled {
 }
 
 .right-buttons {
+    height: 674px;
+    width: 10%;
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
+    margin-bottom: 28.9%;
+    background-color: #193c2b;
+    border: 5px solid #000000;
 }
 
 .startGameButton {
     background-color: #0070CC;
+    width: 100%;
 }
 
 .startGameButton:hover {

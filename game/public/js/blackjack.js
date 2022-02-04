@@ -14,6 +14,8 @@ const cards = [{value : 11, word : "Ace of Club"}, {value : 2, word : "2 of Club
 {value : 10, word : "10 of Diamond"}, {value : 10, word : "Jack of Diamond"}, {value : 10, word : "Queen of Diamond"}, {value : 10, word : "10 of Diamond"}]
 
 let score = 0
+let cpuScore = 0
+let cardDealerScore = 0
 
 let isPlayeble = true
 
@@ -35,6 +37,15 @@ const showCreatedCard = () => {
     
 }
 
+
+    
+
 const botTime = () => {
     isPlayeble = false
+        
+        while(cpuScore <= 17){
+            card = Math.round(Math.random() * 51)
+            document.querySelector('#bot').innerHTML += `<p>${cards[card].word}</p>`
+        }
+    
 }
