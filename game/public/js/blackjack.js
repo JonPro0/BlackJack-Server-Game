@@ -1,5 +1,4 @@
  const showCard = document.querySelector('#pLayer1').innerHTML
-
 const cards = [{value : 11, word : "Ace of Club"}, {value : 2, word : "2 of Club"}, {value : 3, word : "3 of Club"}, {value : 4, word : "4 of Club"}, 
 {value : 5, word : "5 of Club"}, {value : 6, word : "6 of Club"}, {value : 7, word : "7 of Club"}, {value : 8, word : "8 of Club"}, {value : 9, word : "9 of Club"},
 {value : 10, word : "10 of Club"}, {value : 10, word : "Jack of Club"}, {value : 10, word : "Queen of Club"}, {value : 10, word : "10 of Club"},
@@ -13,8 +12,7 @@ const cards = [{value : 11, word : "Ace of Club"}, {value : 2, word : "2 of Club
 {value : 5, word : "5 of Diamond"}, {value : 6, word : "6 of Diamond"}, {value : 7, word : "7 of Diamond"}, {value : 8, word : "8 of Diamond"}, {value : 9, word : "9 of Diamond"},
 {value : 10, word : "10 of Diamond"}, {value : 10, word : "Jack of Diamond"}, {value : 10, word : "Queen of Diamond"}, {value : 10, word : "10 of Diamond"}]
 
-let score = 0
-let cpuScore = 0
+let playerScore = 0
 let cardDealerScore = 0
 
 let isPlayeble = true
@@ -24,28 +22,31 @@ const showCreatedCard = () => {
         let card = Math.round((Math.random() * 51))
         console.log(cards[card].word)
     
-    
         document.querySelector('#player1').innerHTML += `<p>${cards[card].word}</p>` 
-        score += cards[card].value
-        document.querySelector('#playerScore').innerHTML = score 
-        if(score >= 21){
-            document.querySelector('#playerScore').innerHTML = score 
-            alert('Du hast verloren')
+        if((card == 0 || card == 13 || card == 26 || card == 39) && playerScore >= 11){
+            playerScore += 1
+        } else {
+            playerScore += cards[card].value
+        }
+        document.querySelector('#playerScore').innerHTML = `Score: ${playerScore}` 
+        if(playerScore > 21){
+            document.querySelector('#playerScore').innerHTML = `Score: ${playerScore} `
+            alert('Du hast dich gebusted')
+            isPlayeble = false
         }
     } 
     
     
 }
 
-
-    
-
 const botTime = () => {
     isPlayeble = false
-        
-        while(cpuScore <= 17){
-            card = Math.round(Math.random() * 51)
-            document.querySelector('#bot').innerHTML += `<p>${cards[card].word}</p>`
+
+         while(cardDealerScore <= 17){
+            let dealerCard = Math.round(Math.random() * 51)
+            cardDealerScore += cards[dealerCard].value
+            document.querySelector('#botCardDealer').innerHTML += `<p>${cards[dealerCard].word}</p>`  
+            document.querySelector('#botCardDealerScore').innerHTML = `Score: ${cardDealerScore}`      
         }
-    
+
 }
