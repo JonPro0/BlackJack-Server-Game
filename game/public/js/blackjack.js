@@ -15,10 +15,12 @@ const cards = [{value : 11, word : "Ace of Club"}, {value : 2, word : "2 of Club
 let playerScore = 0
 let cardDealerScore = 0
 
-let isPlayeble = true
+let isPlayable = true
+let isDealable = false
 
 const showCreatedCard = () => {
-    if(isPlayeble){
+    if(isPlayable){
+        isDealable = true
         let card = Math.round((Math.random() * 51))
         console.log(cards[card].word)
     
@@ -32,7 +34,7 @@ const showCreatedCard = () => {
         if(playerScore > 21){
             document.querySelector('#playerScore').innerHTML = `Score: ${playerScore} `
             alert('Du hast dich gebusted')
-            isPlayeble = false
+            isPlayable = false
         }
     } 
     
@@ -40,7 +42,10 @@ const showCreatedCard = () => {
 }
 
 const botTime = () => {
-    isPlayeble = false
+
+    if(isDealable){
+    
+    isPlayable = false
 
          while(cardDealerScore <= 17){
             let dealerCard = Math.round(Math.random() * 51)
@@ -49,4 +54,9 @@ const botTime = () => {
             document.querySelector('#botCardDealerScore').innerHTML = `Score: ${cardDealerScore}`      
         }
 
+        if(cardDealerScore > playerScore) alert('Der Kartengeber hat gewonnen!')
+
+    }
+
 }
+
