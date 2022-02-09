@@ -103,21 +103,22 @@ const botTime = () => {
         isPlayable = false
 
         let i = 0
-        while (cardDealerScore <= 17) {
+        while (cardDealerScore < 17) {
             let dealerCard = Math.round(Math.random() * 51)
             cardDealerScore += cards[dealerCard].value
             setTimeout(() => {
                 document.querySelector(
                     '#botCardDealer'
                 ).innerHTML += `<p>${cards[dealerCard].word}</p>`
-                document.querySelector(
-                    '#botCardDealerScore'
-                ).innerHTML = `Score: ${cardDealerScore}`
+                
             }, i * 1000)
             i += 1
         }
 
         setTimeout(() => {
+            document.querySelector(
+                '#botCardDealerScore'
+            ).innerHTML = `Score: ${cardDealerScore}`
             if (cardDealerScore > playerScore)
                 alert('Der Kartengeber hat gewonnen!')
             else if (cardDealerScore < playerScore && !isBusted)
