@@ -1,4 +1,3 @@
-const showCard = document.querySelector('#pLayer1').innerHTML
 const startGame = document.querySelector('#startGame')
 
 const cards = [
@@ -64,8 +63,12 @@ let isDealable = false
 let isBusted = false
 
 startGame.addEventListener('click', () => {
-    console.log('test')
+    $startGame()
 })
+
+const $startGame = () => {
+    console.log('test')
+}
 
 const showCreatedCard = () => {
     if (isPlayable) {
@@ -110,21 +113,23 @@ const botTime = () => {
                 document.querySelector(
                     '#botCardDealer'
                 ).innerHTML += `<p>${cards[dealerCard].word}</p>`
-                document.querySelector(
-                    '#botCardDealerScore'
-                ).innerHTML = `Score: ${cardDealerScore}`
             }, i * 1000)
             i += 1
         }
+        setTimeout(() => {
+            document.querySelector(
+                '#botCardDealerScore'
+            ).innerHTML = `Score: ${cardDealerScore}`
+        }, i * 999)
 
         setTimeout(() => {
-            if (cardDealerScore > playerScore)
+            if (cardDealerScore > playerScore && cardDealerScore <=21)
                 alert('Der Kartengeber hat gewonnen!')
             else if (cardDealerScore < playerScore && !isBusted)
                 alert('Du hast gewonnen!')
             else alert('Unentschieden!')
         }, i * 1000)
 
-        startGame()
+        $startGame()
     }
 }

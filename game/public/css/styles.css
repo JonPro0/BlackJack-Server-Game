@@ -349,7 +349,7 @@ button:disabled {
 
 .botplayer1_score    {
     height: 100%;
-    width: 23%;
+    width: 46%;
     border: 2px solid #cca31d;
     margin:auto;
 }
@@ -381,4 +381,19 @@ button:disabled {
         margin-top: -28px;
         border: 1px solid #289b61;
         border-width: 30%;
+}
+
+.createCard {
+    width: 20%;
+    margin-left: 38%;
+    display: flex;
+    justify-content:center;
+}
+
+.hit {
+    width: 15%;
+    border-radius: 100%;
+    margin-left: 15%;
+    padding: 5%;
+    
 }
