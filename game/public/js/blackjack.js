@@ -1,4 +1,10 @@
+//Alle querySelector
 const startGame = document.querySelector('#startGame')
+const showResult = document.querySelector('#showResult')
+const player1 = document.querySelector('#player1')
+const $playerScore = document.querySelector('#playerScore')
+const botCardDealer = document.querySelector('#botCardDealer')
+const botCardDealerScore = document.querySelector('#botCardDealerScore')
 
 const cards = [
     { value: 11, word: 'Ace of Club' },
@@ -58,16 +64,26 @@ const cards = [
 let playerScore = 0
 let cardDealerScore = 0
 
-let isPlayable = true
+let isPlayable = false
 let isDealable = false
 let isBusted = false
 
 startGame.addEventListener('click', () => {
+    isPlayable = true
     $startGame()
 })
 
 const $startGame = () => {
-    console.log('test')
+    showResult.innerHTML = ''
+    player1.innerHTML = ''
+    $playerScore.innerHTML = 'Score: '
+    playerScore = 0
+    botCardDealer.innerHTML = ''
+    botCardDealerScore.innerHTML = 'Score: '
+    cardDealerScore = 0
+    isBusted = false
+    isDealable = false
+    isPlayable = true
 }
 
 const showCreatedCard = () => {
@@ -76,9 +92,7 @@ const showCreatedCard = () => {
         let card = Math.round(Math.random() * 51)
         console.log(cards[card].word)
 
-        document.querySelector(
-            '#player1'
-        ).innerHTML += `<p>${cards[card].word}</p>`
+        player1.innerHTML += `<p>${cards[card].word}</p>`
         if (
             (card == 0 || card == 13 || card == 26 || card == 39) &&
             playerScore >= 11
@@ -87,14 +101,10 @@ const showCreatedCard = () => {
         } else {
             playerScore += cards[card].value
         }
-        document.querySelector(
-            '#playerScore'
-        ).innerHTML = `Score: ${playerScore}`
+        $playerScore.innerHTML = `Score: ${playerScore}`
         if (playerScore > 21) {
-            document.querySelector(
-                '#playerScore'
-            ).innerHTML = `Score: ${playerScore} `
-            alert('Du hast dich gebusted')
+            $playerScore.innerHTML = `Score: ${playerScore} `
+            showResult.innerHTML = 'Du hast dich gebusted'
             isBusted = true
             isPlayable = false
         }
@@ -110,34 +120,26 @@ const botTime = () => {
             let dealerCard = Math.round(Math.random() * 51)
             cardDealerScore += cards[dealerCard].value
             setTimeout(() => {
-                document.querySelector(
-                    '#botCardDealer'
-                ).innerHTML += `<p>${cards[dealerCard].word}</p>`
-
+                botCardDealer.innerHTML += `<p>${cards[dealerCard].word}</p>`
             }, i * 1000)
             i += 1
         }
         setTimeout(() => {
-            document.querySelector(
-                '#botCardDealerScore'
-            ).innerHTML = `Score: ${cardDealerScore}`
+            botCardDealerScore.innerHTML = `Score: ${cardDealerScore}`
         }, i * 999)
 
         setTimeout(() => {
-
-            if (cardDealerScore > playerScore && cardDealerScore <=21)
-
-            document.querySelector(
-                '#botCardDealerScore'
-            ).innerHTML = `Score: ${cardDealerScore}`
-            if (cardDealerScore > playerScore)
-
-                alert('Der Kartengeber hat gewonnen!')
-            else if (cardDealerScore < playerScore && !isBusted)
-                alert('Du hast gewonnen!')
-            else alert('Unentschieden!')
+            if (
+                (cardDealerScore > playerScore && cardDealerScore <= 21) ||
+                (cardDealerScore <= 21 && isBusted)
+            ) {
+                showResult.innerHTML = 'Der Kartengeber hat gewonnen!'
+            } else if (
+                (cardDealerScore < playerScore && !isBusted) ||
+                (!isBusted && cardDealerScore >= 21)
+            )
+                showResult.innerHTML = 'Du hast gewonnen!'
+            else showResult.innerHTML = 'Unentschieden'
         }, i * 1000)
-
-        $startGame()
     }
 }

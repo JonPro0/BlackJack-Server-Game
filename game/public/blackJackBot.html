@@ -1,51 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zelle's BlackJack</title>
-    <link rel="stylesheet" href="css/styles.css">   
-    <link rel="icon" href="img/favicongreen.png">
-    
-    
-</head>
-<body class="blackJack_body">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Zelle's BlackJack</title>
+        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="icon" href="img/favicongreen.png" />
+        <link
+            href="https://fonts.googleapis.com/css?family=Kalam"
+            rel="stylesheet"
+        />
+    </head>
+    <body class="blackJack_body">
         <h2>BlackJack</h2>
-        <button id="startGame">Spiel starten</button>
-    <div class="botCardDealer" id="botCardDealer">
-        <h3>Kartengeber</h3>
-        
+        <button class="glow-on-hover" id="startGame">Spiel starten</button>
+        <div class="botCardDealer">
+            <h3>Kartengeber</h3>
 
-        <div class="botCardDealerScore" id="botCardDealerScore">Score</div>
-    </div>
-    
+            <div id="botCardDealer"></div>
 
-    
-    <div class="botplayer1and2">
-        <div class="botplayer1_score">
-            <div class="botplayer1">
-                <h2>Player 1</h2>
-                
-                
-                <div id="player1"></div>
-            </div>
-            <div class="botplayerScore"  id="playerScore">Score: </div>
-            
-            
-            
+            <div class="botScore" id="botCardDealerScore">Score:</div>
         </div>
-        
-        
-    </div>
-    <div class="createCard" >
-        <button class="hit" onclick="showCreatedCard()">Hit</button>
-        <button class="hit" id="hit" onclick="botTime()">Stay</button>
-    </div>
-    
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
-    <script src="/js/blackjack.js"></script>
 
-</body>
+        <div class="botplayer1and2">
+            <div class="botplayer1_score">
+                <div class="botplayer1">
+                    <h2>Player 1</h2>
+
+                    <div id="player1"></div>
+                </div>
+                <div class="botScore" id="playerScore">Score:</div>
+            </div>
+        </div>
+        <div class="createCard">
+            <button class="hit" onclick="showCreatedCard()">Karte</button>
+            <button class="hit" id="hit" onclick="botTime()">Halten</button>
+        </div>
+        <div class="showResult" id="showResult"></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+        <script src="/js/blackjack.js"></script>
+    </body>
 </html>

@@ -48,7 +48,7 @@ button {
     border: none;
     color: white;
     font-size: 16px;
-    transition: background .3s ease;
+    transition: background 0.3s ease;
 }
 
 button:hover {
@@ -65,15 +65,15 @@ button:disabled {
 .centered-form {
     background: #333744;
     width: 100vw;
-    height: 100vh;   
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .centered-form__box {
-    box-shadow: 0px 0px 17px 1px #1D1F26;
-    background: #F7F7FA;
+    box-shadow: 0px 0px 17px 1px #1d1f26;
+    background: #f7f7fa;
     padding: 24px;
     width: 250px;
 }
@@ -98,7 +98,7 @@ button:disabled {
     color: white;
     background: #333744;
     width: 225px;
-    overflow-y: scroll
+    overflow-y: scroll;
 }
 
 /* Chat styles */
@@ -123,13 +123,12 @@ button:disabled {
     height: 30%;
     padding: 24px 24px 0 24px;
     overflow-y: auto;
-    
 }
 
 /* Message Styles */
 
 .message {
-    margin-bottom: 16px;   
+    margin-bottom: 16px;
 }
 
 .message__name {
@@ -144,7 +143,7 @@ button:disabled {
 }
 
 .message a {
-    color: #0070CC;
+    color: #0070cc;
 }
 
 /* Message Composition Styles */
@@ -154,7 +153,6 @@ button:disabled {
     flex-shrink: 0;
     margin-top: 16px;
     padding: 24px;
-    
 }
 
 .compose form {
@@ -181,7 +179,7 @@ button:disabled {
     font-weight: 400;
     font-size: 22px;
     background: #2c2f3a;
-    padding: 24px;   
+    padding: 24px;
 }
 
 .list-title {
@@ -209,7 +207,7 @@ button:disabled {
 }
 
 .startGameButton {
-    background-color: #0070CC;
+    background-color: #0070cc;
     width: 100%;
 }
 
@@ -218,7 +216,7 @@ button:disabled {
 }
 
 .rulesButton {
-    background-color: #0070CC;
+    background-color: #0070cc;
     margin-top: 10%;
     width: 100%;
 }
@@ -229,7 +227,7 @@ button:disabled {
 
 .blackJack_body {
     background-color: #193c2b;
-    color:#eeeeee;
+    color: #eeeeee;
 }
 
 .cardDealer {
@@ -277,7 +275,7 @@ button:disabled {
     width: 35%;
     height: 12%;
     margin-left: 39%;
-   
+
     margin-top: 110px;
     border: 1px solid #289b61;
 }
@@ -311,13 +309,13 @@ button:disabled {
 }
 
 .ziel {
-    border: 2px solid #0070CC;
+    border: 2px solid #0070cc;
     margin-right: 20%;
     margin-left: 20%;
 }
 
 .mechanics {
-    border: 2px solid #0070CC;
+    border: 2px solid #0070cc;
     margin-top: 2%;
     margin-right: 20%;
     margin-left: 20%;
@@ -325,7 +323,7 @@ button:disabled {
 }
 
 .values {
-    border: 2px solid #0070CC;
+    border: 2px solid #0070cc;
     margin-left: 20%;
     margin-right: 20%;
     display: flex;
@@ -342,58 +340,136 @@ button:disabled {
     height: 240px;
     margin-bottom: 4%;
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
     text-align: center;
-    font-size: 20px;
+    font-size: 22px;
 }
 
-.botplayer1_score    {
+.botplayer1_score {
     height: 100%;
     width: 46%;
     border: 2px solid #cca31d;
-    margin:auto;
+    margin: auto;
+    margin-top: 3%;
 }
 
 .botCardDealer {
     width: 46%;
-    height: 180px;
+    height: 240px;
     text-align: center;
     margin: auto;
-    margin-top: 5%;
+    margin-top: 2%;
     border: 2px solid #cca31d;
-    font-size: 20px;
+    font-size: 22px;
 }
 
-.botplayerScore {
+.botScore {
     width: 29%;
     height: 12%;
-    border: 2px solid #0070CC;
+    border: 2px solid #0070cc;
     text-align: center;
     margin-bottom: -61%;
     margin-left: 69%;
-
-    
-}
-
-.botCardDealerScore {
-        width: 30%;
-        margin-left: 69%;
-        margin-top: -28px;
-        border: 1px solid #289b61;
-        border-width: 30%;
 }
 
 .createCard {
     width: 20%;
     margin-left: 38%;
     display: flex;
-    justify-content:center;
+    justify-content: center;
+    margin-top: 5%;
 }
 
 .hit {
-    width: 15%;
+    width: 20%;
     border-radius: 100%;
     margin-left: 15%;
     padding: 5%;
-    
+}
+
+.showResult {
+    width: 100%;
+    height: 100px;
+    margin-top: 2%;
+    font-family: 'Kalam';
+    font-size: 70px;
+    text-align: center;
+}
+
+.glow-on-hover {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    margin-left: 44%;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(
+        45deg,
+        #ff0000,
+        #ff7300,
+        #fffb00,
+        #48ff00,
+        #00ffd5,
+        #002bff,
+        #7a00ff,
+        #ff00c8,
+        #ff0000
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #000;
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 400% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
 }
