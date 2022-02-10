@@ -5,6 +5,7 @@ const $messageFormInput = $messageForm.querySelector('input')
 const $messageFormButton = $messageForm.querySelector('button')
 const $sendLocationButton = document.querySelector('#send-location')
 const $messages = document.querySelector('#messages')
+const $testButton = document.querySelector('#testButton')
 
 //Templates
 const messageTemplate = document.querySelector('#message-template').innerHTML
@@ -71,6 +72,7 @@ $messageForm.addEventListener('submit', (e) => {
         console.log('Message delivered!')
     })
 })
+
 
 socket.emit('join', { username, room }, (error) => {
     if (error) {

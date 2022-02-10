@@ -12,7 +12,7 @@ const addUser = ({ id, username, room }) => {
         return {
             error: 'Username and room are required!',
         }
-    }
+    } 
 
     // Check for existing users
     const existingUser = users.find((user) => {
@@ -23,6 +23,10 @@ const addUser = ({ id, username, room }) => {
     if (existingUser) {
         return {
             error: 'Username is in use!',
+        }
+    }else if (getUsersInRoom == 4){
+        return{
+            error: 'Too many Users in Room'
         }
     }
 
