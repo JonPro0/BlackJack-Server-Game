@@ -12,7 +12,7 @@ const addUser = ({ id, username, room }) => {
         return {
             error: 'Username and room are required!',
         }
-    } 
+    }
 
     // Check for existing users
     const existingUser = users.find((user) => {
@@ -24,14 +24,15 @@ const addUser = ({ id, username, room }) => {
         return {
             error: 'Username is in use!',
         }
-    }else if (getUsersInRoom == 4){
-        return{
-            error: 'Too many Users in Room'
+    } else if (getUsersInRoom == 4) {
+        return {
+            error: 'Too many Users in Room',
         }
     }
+    let playerid = users.length
 
     //Store user
-    const user = { id, username, room }
+    const user = { id, username, room, playerid }
     users.push(user)
     return { user }
 }

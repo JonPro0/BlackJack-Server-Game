@@ -5,7 +5,7 @@ const $messageFormInput = $messageForm.querySelector('input')
 const $messageFormButton = $messageForm.querySelector('button')
 const $sendLocationButton = document.querySelector('#send-location')
 const $messages = document.querySelector('#messages')
-const $testButton = document.querySelector('#testButton')
+const assignPlayer1 = document.querySelector('#assignPlayer1')
 
 //Templates
 const messageTemplate = document.querySelector('#message-template').innerHTML
@@ -15,6 +15,7 @@ const sidebarTemplate = document.querySelector('#sidebar-template').innerHTML
 const { username, room } = Qs.parse(location.search, {
     ignoreQueryPrefix: true,
 })
+const {showCreatedCard, botTime} = require ('./blackjack')
 
 const autoscroll = () => {
     const $newmessage = $messages.lastElementChild
@@ -80,3 +81,7 @@ socket.emit('join', { username, room }, (error) => {
         location.href = '/'
     }
 })
+
+const test = () => {
+    document.querySelector('#game__BlackJack').innerHTML = '<object type="text/html" data="blackJackBot.html" ></object>'
+}

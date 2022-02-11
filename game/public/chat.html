@@ -10,7 +10,7 @@
             <div id="sidebar" class="chat__sidebar"></div>
 
             <div class="game__all">
-                <div class="game__BlackJack"></div>
+                <div class="game__BlackJack" id="game__BlackJack"></div>
                 <div id="messages" class="chat__messages"></div>
                 <div class="compose">
                     <form id="message-form">
@@ -35,9 +35,15 @@
                 <form action="rules.html" class="rules-button-form">
                     <button class="rulesButton">Rules</button>
                 </form>
+                <button class="rulesButton" id="assignPlayer1" onclick="test()">
+                    Assign Player 1
+                </button>
             </div>
         </div>
 
+        <script id="player1-template" type="text/html">
+            <span>{{username}}</span>
+        </script>
         <script id="message-template" type="text/html">
             <div class="message">
                 <p>

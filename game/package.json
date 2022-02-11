@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "format": "prettier --write --tab-width 4 --no-semi --single-quote src/utils/*.js public/js/*.js src/index.js public/*.html"
+    "format": "prettier --write --tab-width 4 --no-semi --single-quote src/utils/*.js public/js/*.js src/index.js public/*.html public/css/*css"
   },
   "author": "Zelle",
   "license": "ISC",
