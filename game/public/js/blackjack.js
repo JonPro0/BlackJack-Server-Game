@@ -153,5 +153,5 @@ const botTime = () => {
 
 module.exports = {
     showCreatedCard,
-    botTime
+    botTime,
 }

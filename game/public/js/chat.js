@@ -15,7 +15,7 @@ const sidebarTemplate = document.querySelector('#sidebar-template').innerHTML
 const { username, room } = Qs.parse(location.search, {
     ignoreQueryPrefix: true,
 })
-const {showCreatedCard, botTime} = require ('./blackjack')
+const { showCreatedCard, botTime } = require('./blackjack')
 
 const autoscroll = () => {
     const $newmessage = $messages.lastElementChild
@@ -74,7 +74,6 @@ $messageForm.addEventListener('submit', (e) => {
     })
 })
 
-
 socket.emit('join', { username, room }, (error) => {
     if (error) {
         alert(error)
@@ -83,5 +82,6 @@ socket.emit('join', { username, room }, (error) => {
 })
 
 const test = () => {
-    document.querySelector('#game__BlackJack').innerHTML = '<object type="text/html" data="blackJackBot.html" ></object>'
+    document.querySelector('#game__BlackJack').innerHTML =
+        '<object type="text/html" data="blackJackBot.html" ></object>'
 }

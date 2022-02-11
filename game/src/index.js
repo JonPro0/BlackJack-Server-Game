@@ -77,7 +77,6 @@ io.on('connection', (socket) => {
             })
         }
     })
-   
 })
 
 server.listen(port, () => {
