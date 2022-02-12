@@ -3,7 +3,7 @@ const http = require('http')
 const express = require('express')
 const socketio = require('socket.io')
 const FILTER = require('bad-words')
-const { generateMessage, generateLocationMessage } = require('./utils/message')
+const { generateMessage } = require('./utils/message')
 const {
     addUser,
     removeUser,

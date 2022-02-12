@@ -150,8 +150,3 @@ const botTime = () => {
         }, i * 1001)
     }
 }
-
-module.exports = {
-    showCreatedCard,
-    botTime,
-}
