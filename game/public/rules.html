@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Rules</title>
         <link rel="stylesheet" href="css/styles.css" />
+        <link rel="icon" href="img/blackjack.png" />
     </head>
     <body class="blackJack_body">
         <h1 class="rules_h1">Regeln</h1>
@@ -21,8 +22,8 @@
             <div class="mechanics">
                 <h2>Mechaniken</h2>
                 <li>Jeder Spieler bekommt zunächst 2 Karten</li>
-                <li>Hit -> Ich möchte noch eine Karte</li>
-                <li>Stay -> Ich möchte keine Karte</li>
+                <li>Karte -> Ich möchte noch eine Karte</li>
+                <li>Halten -> Ich möchte keine Karte und der nächste ist dran</li>
                 <br />
                 <li>
                     Der Kartengeber zieht solange, bis er über oder gleich 17
@@ -32,8 +33,10 @@
                     Ist er über oder gleich 17 Punkten, darf er keine Karte mehr
                     ziehen
                 </li>
+                <br/>
+                <li>Du hast gewonnen, wenn du mehr Punkte als der Kartendealer hast und selber nicht über 21 Punkten bist</li>
             </div>
-            <h2>Werte</h2>
+            <h2 id="rules_h2_values">Werte</h2>  
             <div class="values">
                 <div class="Karte">
                     <h3>Karte:</h3>
@@ -67,7 +70,7 @@
                     10 <br />
                     10 <br />
                     10 <br />
-                    1 / 11 <br />
+                    1 / 11 (immer zu deinem Vorteil)<br />
                 </div>
             </div>
         </div>
