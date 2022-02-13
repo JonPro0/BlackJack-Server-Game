@@ -209,6 +209,7 @@ button:disabled {
 .startGameButton {
     background-color: #0070cc;
     width: 100%;
+    margin-top: 10%;
 }
 
 .startGameButton:hover {
@@ -222,6 +223,14 @@ button:disabled {
 }
 
 .rulesButton:hover {
+    background-color: #05365e;
+}
+
+.showGameButton {
+    background-color: #0070cc;
+    margin-top: 10%;
+}
+.showGameButton:hover {
     background-color: #05365e;
 }
 
@@ -308,6 +317,14 @@ button:disabled {
     justify-content: center;
 }
 
+#rules_h2_values {
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 2%;
+    border: 2px solid #0070cc;
+    border-bottom: transparent;
+}
+
 .ziel {
     border: 2px solid #0070cc;
     margin-right: 20%;
@@ -324,6 +341,7 @@ button:disabled {
 
 .values {
     border: 2px solid #0070cc;
+    border-top: transparent;
     margin-left: 20%;
     margin-right: 20%;
     display: flex;
@@ -377,7 +395,7 @@ button:disabled {
     margin-left: 38%;
     display: flex;
     justify-content: center;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 
 .hit {
@@ -473,3 +491,78 @@ button:disabled {
         background-position: 0 0;
     }
 }
+
+/* loadBlackJack css */
+.loadblackJack_body {
+    background-color: #193c2b;
+    color: #eeeeee;
+}
+
+.modheight {
+    height: 660px;
+    width: 1480px;
+}
+
+.loadCardDealer {
+    width: 25%;
+    height: 140px;
+    text-align: center;
+    margin: auto;
+    margin-top: 0.5%;
+    border: 2px solid #cca31d;
+    font-size: 22px;
+}
+
+.loadScore {
+    width: 29%;
+    height: 12%;
+    border: 2px solid #0070cc;
+    text-align: center;
+    margin-left: 69%;
+    font-size: 12px;
+}
+
+.loadplayer1and2 {
+    width: 45%;
+    height: 150px;
+    margin-left: 27.5%;
+    margin-bottom: 4%;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    font-size: 22px;
+}
+
+.loadplayer3and4 {
+    height: 150px;
+    margin-left: 3%;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    font-size: 22px;
+}
+
+.loadplayer_score {
+    height: 100%;
+    width: 46%;
+    border: 2px solid #cca31d;
+    margin: auto;
+    margin-top: 3%;
+}
+
+.loadplayer3_score {
+    height: 140px;
+    width: 306.8px;
+    border: 2px solid #cca31d;
+    margin-top: 3%;
+    margin-left: 45px;
+}
+
+.loadplayer4_score {
+    height: 140px;
+    width: 306.8px;
+    border: 2px solid #cca31d;
+    margin-top: 3%;
+    margin-left: 680px;
+}
+
