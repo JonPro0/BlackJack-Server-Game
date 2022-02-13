@@ -79,3 +79,8 @@ socket.emit('join', { username, room }, (error) => {
         location.href = '/'
     }
 })
+
+const showGame = () => {
+    document.querySelector('#game__BlackJack').innerHTML =
+        '<object type="text/html" data="loadBlackJack.html" width="100%" height="100%"></object>'
+}
