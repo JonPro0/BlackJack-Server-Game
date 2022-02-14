@@ -129,6 +129,7 @@ button:disabled {
     padding: 24px 24px 0 24px;
     overflow-y: auto;
     overflow-x: hidden;
+    max-width: 1485px;
 }
 
 /* Message Styles */
