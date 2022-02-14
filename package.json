@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
+    "build": "http-server",
     "format": "prettier --write --tab-width 4 --no-semi --single-quote src/utils/*.js public/js/*.js src/index.js public/*.html public/css/*css"
   },
   "author": "Zelle",
@@ -16,7 +17,8 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.15",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "http-server": "14.1.0"
   },
   "description": ""
 }
