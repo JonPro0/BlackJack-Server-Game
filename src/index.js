@@ -32,12 +32,18 @@ io.on('connection', (socket) => {
 
         socket.join(user.room)
 
-        socket.emit('message', generateMessage('Server', 'Willkommen bei Zelle`s BlackJack!'))
+        socket.emit(
+            'message',
+            generateMessage('Server', 'Willkommen bei Zelle`s BlackJack!')
+        )
         socket.broadcast
             .to(user.room)
             .emit(
                 'message',
-                generateMessage('Server', `${user.username} ist dem Raum beigetreten!`)
+                generateMessage(
+                    'Server',
+                    `${user.username} ist dem Raum beigetreten!`
+                )
             )
         io.to(user.room).emit('roomData', {
             room: user.room,
@@ -73,9 +79,9 @@ io.on('connection', (socket) => {
         io.to(user.room).emit('hit', card)
     })
 
-    socket.on('stay1', () => {
+    socket.on('stay1', ({dealerCard, dealerCard2, dealerCard3, dealerCard4, dealerCard5, dealerCard6}) => {
         const user = getUser(socket.id)
-        io.to(user.room).emit('stay')
+        io.to(user.room).emit('stay', {dealerCard, dealerCard2, dealerCard3, dealerCard4, dealerCard5, dealerCard6})
     })
 
     socket.on('disconnect', () => {
@@ -84,7 +90,10 @@ io.on('connection', (socket) => {
         if (user) {
             io.to(user.room).emit(
                 'message',
-                generateMessage('Server', `${user.username} hat den Raum verlassen!`)
+                generateMessage(
+                    'Server',
+                    `${user.username} hat den Raum verlassen!`
+                )
             )
             io.to(user.room).emit('roomData', {
                 room: user.room,

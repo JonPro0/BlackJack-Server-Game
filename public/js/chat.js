@@ -80,7 +80,6 @@ socket.emit('join', { username, room }, (error) => {
     }
 })
 
-
 //Logik für das Spiel
 
 //Alle querySelector
@@ -158,6 +157,13 @@ const cards = [
     { value: 10, word: 'King of Diamond', img: 'KD.png' },
 ]
 
+let dealerCard = Math.round(Math.random() * 51)
+let dealerCard2 = Math.round(Math.random() * 51)
+let dealerCard3 = Math.round(Math.random() * 51)
+let dealerCard4 = Math.round(Math.random() * 51)
+let dealerCard5 = Math.round(Math.random() * 51)
+let dealerCard6 = Math.round(Math.random() * 51)
+
 let playerScore = 0
 let player2Score = 0
 let player3Score = 0
@@ -189,16 +195,15 @@ hit.addEventListener('click', () => {
 })
 
 socket.on('hit', (card) => {
-    
     showCreatedCard(card)
 })
 
 stay.addEventListener('click', () => {
-    socket.emit('stay1')
+    socket.emit('stay1', {dealerCard, dealerCard2, dealerCard3, dealerCard4, dealerCard5, dealerCard6})
 })
 
-socket.on('stay', () => {
-    $stay()
+socket.on('stay', ({dealerCard, dealerCard2, dealerCard3, dealerCard4, dealerCard5, dealerCard6}) => {
+    $stay({dealerCard, dealerCard2, dealerCard3, dealerCard4, dealerCard5, dealerCard6})
 })
 
 const $startGame = () => {
@@ -208,12 +213,15 @@ const $startGame = () => {
     $playerScore.innerHTML = 'Score: '
     playerScore = 0
     player2.innerHTML = ''
+    showResult2.innerHTML = ''
     $player2Score.innerHTML = 'Score: '
     player2Score = 0
     player3.innerHTML = ''
+    showResult3.innerHTML = ''
     $player3Score.innerHTML = 'Score: '
     player3Score = 0
     player4.innerHTML = ''
+    showResult4.innerHTML = ''
     $player4Score.innerHTML = 'Score: '
     player4Score = 0
     loadCardDealer.innerHTML = ''
@@ -225,73 +233,119 @@ const $startGame = () => {
 }
 
 const showCreatedCard = (card) => {
-    if(isPlayable1){
+    if (isPlayable1) {
         showCreatedCardPlayer1(card)
-    } else if(isPlayable2){
+    } else if (isPlayable2) {
         showCreatedCardPlayer2(card)
-    } else if(isPlayable3){
+    } else if (isPlayable3) {
         showCreatedCardPlayer3(card)
-    } else if(isPlayable4){
+    } else if (isPlayable4) {
         showCreatedCardPlayer4(card)
     }
 }
 
-const $stay = () => {
-    if(isPlayable1){
+const $stay = ({dealerCard, dealerCard2, dealerCard3, dealerCard4, dealerCard5, dealerCard6}) => {
+    if (isPlayable1) {
         showResult1.innerHTML = 'Halten'
         isPlayable1 = false
         isPlayable2 = true
-    } else if (isPlayable2){
+    } else if (isPlayable2) {
         showResult2.innerHTML = 'Halten'
         isPlayable2 = false
         isPlayable3 = true
-    } else if (isPlayable3){
+    } else if (isPlayable3) {
         showResult3.innerHTML = 'Halten'
         isPlayable3 = false
         isPlayable4 = true
-    } else if(isPlayable4) {
+    } else if (isPlayable4) {
         showResult4.innerHTML = 'Halten'
         isPlayable4 = false
         isDealable = true
-        dealerTurn()
+        dealerTurn({dealerCard, dealerCard2, dealerCard3, dealerCard4, dealerCard5, dealerCard6})
     }
 }
 
-const dealerTurn = () => {
+const dealerTurn = ({dealerCard, dealerCard2, dealerCard3, dealerCard4, dealerCard5, dealerCard6}) => {
     if (isDealable) {
-        let i = 0
-        let tmpScore = 0
-        while (cardDealerScore < 17) {
-            let dealerCard = Math.round(Math.random() * 51)
-            cardDealerScore += cards[dealerCard].value
-            setTimeout(() => {
-                tmpScore += cards[dealerCard].value
-                loadCardDealer.innerHTML += `<img src="${imgSource}${cards[dealerCard].img}" width="50px" height="70px"/>`
-                loadCardDealerScore.innerHTML = `Score: ${tmpScore}`
-            }, i * 1000)
-            i += 1
-        }
-        setTimeout(() => {}, i * 999)
+        let i = 1
+
+       
+
+        cardDealerScore += cards[dealerCard].value
+        loadCardDealer.innerHTML += `<img src="${imgSource}${cards[dealerCard].img}" width="50px" height="70px"/>`
+        loadCardDealerScore.innerHTML = `Score: ${cardDealerScore}`
+
+        cardDealerScore += cards[dealerCard2].value
+        setTimeout(() => {
+            loadCardDealer.innerHTML += `<img src="${imgSource}${cards[dealerCard2].img}" width="50px" height="70px"/>`
+            loadCardDealerScore.innerHTML = `Score: ${cardDealerScore}`
+        }, i * 1000)
+        i++
 
         setTimeout(() => {
-            checkwin1()
-            checkwin2()
-            checkwin3()
-            checkwin4()
+            if (cardDealerScore >= 17) {
+                checkwin1()
+                checkwin2()
+                checkwin3()
+                checkwin4()
+            } else {
+                cardDealerScore += cards[dealerCard3].value
+                loadCardDealer.innerHTML += `<img src="${imgSource}${cards[dealerCard3].img}" width="50px" height="70px"/>`
+                loadCardDealerScore.innerHTML = `Score: ${cardDealerScore}`
+            }
         }, i * 1000)
+        i++
+
         setTimeout(() => {
-            startGame.innerHTML = 'Restart!'
-        }, i * 1001)
+            if (cardDealerScore >= 17) {
+                checkwin1()
+                checkwin2()
+                checkwin3()
+                checkwin4()
+            } else {
+                cardDealerScore += cards[dealerCard4].value
+                loadCardDealer.innerHTML += `<img src="${imgSource}${cards[dealerCard4].img}" width="50px" height="70px"/>`
+                loadCardDealerScore.innerHTML = `Score: ${cardDealerScore}`
+            }
+        }, i * 1000)
+        i++
+
+        setTimeout(() => {
+            if (cardDealerScore >= 17) {
+                checkwin1()
+                checkwin2()
+                checkwin3()
+                checkwin4()
+            } else {
+                cardDealerScore += cards[dealerCard5].value
+                loadCardDealer.innerHTML += `<img src="${imgSource}${cards[dealerCard5].img}" width="50px" height="70px"/>`
+                loadCardDealerScore.innerHTML = `Score: ${cardDealerScore}`
+            }
+        }, i * 1000)
+        i++
+
+        setTimeout(() => {
+            if (cardDealerScore >= 17) {
+                checkwin1()
+                checkwin2()
+                checkwin3()
+                checkwin4()
+            } else {
+                cardDealerScore += cards[dealerCard6].value
+                loadCardDealer.innerHTML += `<img src="${imgSource}${cards[dealerCard6].img}" width="50px" height="70px"/>`
+                loadCardDealerScore.innerHTML = `Score: ${cardDealerScore}`
+            }
+        }, i * 1000)
+
+        startGame.innerHTML = 'Restart!'
     }
 }
 
 const showCreatedCardPlayer1 = (card) => {
     if (isPlayable1) {
-        
         console.log(cards[card].word)
 
-        if(playerScore == 0){
-
+        if (playerScore == 0) {
         }
         player1.innerHTML += `<img src="${imgSource}${cards[card].img}" width="50px" height="70px"/>`
 
@@ -311,7 +365,6 @@ const showCreatedCardPlayer1 = (card) => {
             isPlayable1 = false
             isPlayable2 = true
         }
-
     }
 }
 
@@ -336,13 +389,11 @@ const showCreatedCardPlayer2 = (card) => {
             isPlayable2 = false
             isPlayable3 = true
         }
-
     }
 }
 
 const showCreatedCardPlayer3 = (card) => {
     if (isPlayable3) {
-        
         console.log(cards[card].word)
 
         player3.innerHTML += `<img src="${imgSource}${cards[card].img}" width="50px" height="70px"/>`
@@ -363,13 +414,11 @@ const showCreatedCardPlayer3 = (card) => {
             isPlayable3 = false
             isPlayable4 = true
         }
-
     }
 }
 
 const showCreatedCardPlayer4 = (card) => {
     if (isPlayable4) {
-        
         console.log(cards[card].word)
         player4.innerHTML += `<img src="${imgSource}${cards[card].img}" width="50px" height="70px"/>`
 
@@ -390,7 +439,6 @@ const showCreatedCardPlayer4 = (card) => {
             isDealable = true
             dealerTurn()
         }
-
     }
 }
 
@@ -450,6 +498,3 @@ const checkwin4 = () => {
         showResult4.innerHTML = 'Du hast gewonnen!'
     else showResult4.innerHTML = 'Unentschieden'
 }
-
-
-

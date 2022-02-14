@@ -103,6 +103,7 @@ button:disabled {
     color: white;
     background: #333744;
     width: 225px;
+    flex-shrink: 0;
     overflow-y: scroll;
 }
 
@@ -240,7 +241,6 @@ button:disabled {
 .showGameButton:hover {
     background-color: #05365e;
 }
-
 
 .blackJack_body {
     background-color: #193c2b;
@@ -580,4 +580,3 @@ button:disabled {
     font-family: 'Lobster', cursive;
     color: #b7f707d3;
 }
-
