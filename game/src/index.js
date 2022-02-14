@@ -32,12 +32,12 @@ io.on('connection', (socket) => {
 
         socket.join(user.room)
 
-        socket.emit('message', generateMessage('Server', 'Welcome!'))
+        socket.emit('message', generateMessage('Server', 'Willkommen bei Zelle`s BlackJack!'))
         socket.broadcast
             .to(user.room)
             .emit(
                 'message',
-                generateMessage('Server', `${user.username} has joined!`)
+                generateMessage('Server', `${user.username} ist dem Raum beigetreten!`)
             )
         io.to(user.room).emit('roomData', {
             room: user.room,
@@ -53,14 +53,29 @@ io.on('connection', (socket) => {
         const filter = new FILTER()
 
         if (filter.isProfane(message)) {
-            return callback('Profanity is not alllowed!')
+            return callback('Es sind keine Schimpfwörter erlaubt!')
         }
 
         io.to(user.room).emit(
             'message',
             generateMessage(user.username, message)
         )
-        callback('Delivered')
+        callback('Zugestellt')
+    })
+
+    socket.on('startGame1', () => {
+        const user = getUser(socket.id)
+        io.to(user.room).emit('startGame')
+    })
+
+    socket.on('hit1', (card) => {
+        const user = getUser(socket.id)
+        io.to(user.room).emit('hit', card)
+    })
+
+    socket.on('stay1', () => {
+        const user = getUser(socket.id)
+        io.to(user.room).emit('stay')
     })
 
     socket.on('disconnect', () => {
@@ -69,7 +84,7 @@ io.on('connection', (socket) => {
         if (user) {
             io.to(user.room).emit(
                 'message',
-                generateMessage('Server', `${user.username} has left!`)
+                generateMessage('Server', `${user.username} hat den Raum verlassen!`)
             )
             io.to(user.room).emit('roomData', {
                 room: user.room,

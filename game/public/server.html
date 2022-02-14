@@ -4,13 +4,74 @@
         <title>Zelle's BlackJack</title>
         <link rel="icon" href="img/blackjack.png" />
         <link rel="stylesheet" href="css/styles.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> 
     </head>
     <body>
         <div class="chat">
             <div id="sidebar" class="chat__sidebar"></div>
 
             <div class="game__all">
-                <div class="game__BlackJack" id="game__BlackJack"></div>
+                <div class="game__BlackJack" id="game__BlackJack">
+                    <div class="modheight">
+                        <h2>BlackJack</h2>
+                        <button class="glow-on-hover" id="startGame">Spiel starten</button>
+            
+                        <div class="loadCardDealer">
+                            <h3>Kartengeber</h3>
+            
+                            <div id="loadCardDealer"></div>
+            
+                            <div class="loadScore" id="loadCardDealerScore">Score:</div>
+                        </div>
+            
+                        <div class="loadplayer3and4">
+                            <div class="loadplayer3_score">
+                                <div class="loadplayer1">
+                                    <h2>Player 3</h2>
+            
+                                    <div id="player3"></div>
+                                </div>
+                                <div class="loadScore" id="player3Score">Score:</div>
+                                <div class="loadshowResult" id="showResult3"></div>
+                            </div>
+                            <div class="loadplayer4_score">
+                                <div class="loadplayer1">
+                                    <h2>Player 4</h2>
+                                    <div id="player4"></div>
+                                </div>
+                                <div class="loadScore" id="player4Score">Score:</div>
+                                <div class="loadshowResult" id="showResult4"></div>
+                            </div>
+                        </div>
+            
+                        <div class="loadplayer1and2">
+                            <div class="loadplayer_score">
+                                <div class="loadplayer1">
+                                    <h2>Player 1</h2>
+            
+                                    <div id="player1"></div>
+                                </div>
+                                <div class="loadScore" id="player1Score">Score:</div>
+                                <div class="loadshowResult" id="showResult1"></div>
+                            </div>
+                            <div class="loadplayer_score">
+                                <div class="loadplayer1">
+                                    <h2>Player 2</h2>
+                                    <div id="player2"></div>
+                                </div>
+                                <div class="loadScore" id="player2Score">Score:</div>
+                                <div class="loadshowResult" id="showResult2"></div>
+                            </div>
+                        </div>
+                        <div class="createCard">
+                            <button class="hit" id="hit">Karte</button>
+                            <button class="hit" id="stay">Halten</button>
+                        </div>
+                    </div>
+                    <div class="showResult" id="showResult"></div>
+                </div>
                 <div id="messages" class="chat__messages"></div>
                 <div class="compose">
                     <form id="message-form">
@@ -26,7 +87,7 @@
                 </div>
             </div>
             <div class="right-buttons">
-                <button class="showGameButton" onclick="showGame()">Start Game</button>
+                
                 <form action="/blackJackBot.html" class="play-button-form">
                     <button class="startGameButton">
                         Start Game
