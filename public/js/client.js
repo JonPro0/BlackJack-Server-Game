@@ -208,7 +208,7 @@ socket.on('stay', ({dealerCard, dealerCard2, dealerCard3, dealerCard4, dealerCar
 
 const $startGame = () => {
     startGame.innerHTML = ''
-    showResult1.innerHTML = ''
+    showResult1.innerHTML = 'Player 1 ist dran'
     player1.innerHTML = ''
     $playerScore.innerHTML = 'Score: '
     playerScore = 0
@@ -249,14 +249,17 @@ const $stay = ({dealerCard, dealerCard2, dealerCard3, dealerCard4, dealerCard5, 
         showResult1.innerHTML = 'Halten'
         isPlayable1 = false
         isPlayable2 = true
+        showResult2.innerHTML = 'Player 2 ist dran'
     } else if (isPlayable2) {
         showResult2.innerHTML = 'Halten'
         isPlayable2 = false
         isPlayable3 = true
+        showResult3.innerHTML = 'Player 3 ist dran'
     } else if (isPlayable3) {
         showResult3.innerHTML = 'Halten'
         isPlayable3 = false
         isPlayable4 = true
+        showResult4.innerHTML = 'Player 4 ist dran'
     } else if (isPlayable4) {
         showResult4.innerHTML = 'Halten'
         isPlayable4 = false
@@ -364,6 +367,7 @@ const showCreatedCardPlayer1 = (card) => {
             isBusted = true
             isPlayable1 = false
             isPlayable2 = true
+            showResult2.innerHTML = 'Player 2 ist dran'
         }
     }
 }
@@ -388,6 +392,7 @@ const showCreatedCardPlayer2 = (card) => {
             isBusted2 = true
             isPlayable2 = false
             isPlayable3 = true
+            showResult3.innerHTML = 'Player 3 ist dran'
         }
     }
 }
@@ -413,6 +418,7 @@ const showCreatedCardPlayer3 = (card) => {
             isBusted3 = true
             isPlayable3 = false
             isPlayable4 = true
+            showResult4.innerHTML = 'Player 4 ist dran'
         }
     }
 }
@@ -434,10 +440,10 @@ const showCreatedCardPlayer4 = (card) => {
         if (player4Score > 21) {
             $playerScore.innerHTML = `Score: ${player4Score} `
             showResult4.innerHTML = 'Du hast dich gebusted'
-            isBuste4 = true
+            isBusted4 = true
             isPlayable4 = false
             isDealable = true
-            dealerTurn()
+            dealerTurn({dealerCard, dealerCard2, dealerCard3, dealerCard4, dealerCard5, dealerCard6})
         }
     }
 }
