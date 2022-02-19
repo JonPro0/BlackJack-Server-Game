@@ -1,11 +1,40 @@
 const socket = io()
 
+
+//Alle querySelector
+const startGame = document.querySelector('#startGame')
+const hit = document.querySelector('#hit')
+const stay = document.querySelector('#stay')
+const showResult1 = document.querySelector('#showResult1')
+const showResult2 = document.querySelector('#showResult2')
+const showResult3 = document.querySelector('#showResult3')
+const showResult4 = document.querySelector('#showResult4')
+const player1 = document.querySelector('#player1')
+const player2 = document.querySelector('#player2')
+const player3 = document.querySelector('#player3')
+const player4 = document.querySelector('#player4')
+const $playerScore = document.querySelector('#player1Score')
+const $player2Score = document.querySelector('#player2Score')
+const $player3Score = document.querySelector('#player3Score')
+const $player4Score = document.querySelector('#player4Score')
+const loadCardDealer = document.querySelector('#loadCardDealer')
+const loadCardDealerScore = document.querySelector('#loadCardDealerScore')
+
 const $messageForm = document.querySelector('#message-form')
 const $messageFormInput = $messageForm.querySelector('input')
 const $messageFormButton = $messageForm.querySelector('button')
 const $sendLocationButton = document.querySelector('#send-location')
 const $messages = document.querySelector('#messages')
-const assignPlayer1 = document.querySelector('#assignPlayer1')
+
+const bePlayer1 = document.querySelector('#bePlayer1')
+let h2Player1 = document.querySelector('#h2Player1')
+const bePlayer2 = document.querySelector('#bePlayer2')
+let h2Player2 = document.querySelector('#h2Player2')
+const bePlayer3 = document.querySelector('#bePlayer3')
+let h2Player3 = document.querySelector('#h2Player3')
+const bePlayer4 = document.querySelector('#bePlayer4')
+let h2Player4 = document.querySelector('#h2Player4')
+const resetPlayers = document.querySelector('#resetPlayerButton')
 
 //Templates
 const messageTemplate = document.querySelector('#message-template').innerHTML
@@ -82,24 +111,58 @@ socket.emit('join', { username, room }, (error) => {
 
 //Logik für das Spiel
 
-//Alle querySelector
-const startGame = document.querySelector('#startGame')
-const hit = document.querySelector('#hit')
-const stay = document.querySelector('#stay')
-const showResult1 = document.querySelector('#showResult1')
-const showResult2 = document.querySelector('#showResult2')
-const showResult3 = document.querySelector('#showResult3')
-const showResult4 = document.querySelector('#showResult4')
-const player1 = document.querySelector('#player1')
-const player2 = document.querySelector('#player2')
-const player3 = document.querySelector('#player3')
-const player4 = document.querySelector('#player4')
-const $playerScore = document.querySelector('#player1Score')
-const $player2Score = document.querySelector('#player2Score')
-const $player3Score = document.querySelector('#player3Score')
-const $player4Score = document.querySelector('#player4Score')
-const loadCardDealer = document.querySelector('#loadCardDealer')
-const loadCardDealerScore = document.querySelector('#loadCardDealerScore')
+bePlayer1.addEventListener('click', () => {
+    socket.emit('bePlayer1_1')
+})
+
+socket.on('bePlayer1', (username) => {
+    h2Player1.innerHTML = username
+    bePlayer1.setAttribute('disabled', 'disabled')
+})
+
+bePlayer2.addEventListener('click', () => {
+    socket.emit('bePlayer2_1')
+})
+
+socket.on('bePlayer2', (username) => {
+    h2Player2.innerHTML = username
+    bePlayer2.setAttribute('disabled', 'disabled')
+})
+
+bePlayer3.addEventListener('click', () => {
+    socket.emit('bePlayer3_1')
+})
+
+socket.on('bePlayer3', (username) => {
+    h2Player3.innerHTML = username
+    bePlayer3.setAttribute('disabled', 'disabled')
+})
+
+bePlayer4.addEventListener('click', () => {
+    socket.emit('bePlayer4_1')
+})
+
+socket.on('bePlayer4', (username) => {
+    h2Player4.innerHTML = username
+    bePlayer4.setAttribute('disabled', 'disabled')
+})
+
+resetPlayers.addEventListener('click', () => {
+    socket.emit('resetPlayer_1')
+})
+
+socket.on('resetPlayer', () => {
+    h2Player1.innerHTML = ''
+    bePlayer1.removeAttribute('disabled')
+    h2Player2.innerHTML = ''
+    bePlayer2.removeAttribute('disabled')
+    h2Player3.innerHTML = ''
+    bePlayer3.removeAttribute('disabled')
+    h2Player4.innerHTML = ''
+    bePlayer4.removeAttribute('disabled')
+})
+
+
 const imgSource = 'https://deckofcardsapi.com/static/img/'
 
 const cards = [

@@ -84,6 +84,31 @@ io.on('connection', (socket) => {
         io.to(user.room).emit('stay', {dealerCard, dealerCard2, dealerCard3, dealerCard4, dealerCard5, dealerCard6})
     })
 
+    socket.on('bePlayer1_1', () => {
+        const user = getUser(socket.id)
+        io.to(user.room).emit('bePlayer1', user.username)
+    })
+
+    socket.on('bePlayer2_1', () => {
+        const user = getUser(socket.id)
+        io.to(user.room).emit('bePlayer2', user.username)
+    })
+
+    socket.on('bePlayer3_1', () => {
+        const user = getUser(socket.id)
+        io.to(user.room).emit('bePlayer3', user.username)
+    })
+
+    socket.on('bePlayer4_1', () => {
+        const user = getUser(socket.id)
+        io.to(user.room).emit('bePlayer4', user.username)
+    })
+
+    socket.on('resetPlayer_1', () => {
+        const user = getUser(socket.id)
+        io.to(user.room).emit('resetPlayer')
+    })
+
     socket.on('disconnect', () => {
         const user = removeUser(socket.id)
 

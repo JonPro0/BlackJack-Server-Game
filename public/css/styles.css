@@ -234,6 +234,36 @@ button:disabled {
     background-color: #05365e;
 }
 
+.playerButton {
+    background-color: #2c2f3a;
+    color: #eeeeee;
+    margin-top: 10%;
+    width: 9.4vw;
+}
+
+.playerButton:hover {
+    background-color: transparent;
+    border: 3px solid #2c2f3a;
+}
+
+.playerButton:disabled {
+    background: #1f222f;
+    color: #888585;
+}
+
+.playerButton:disabled:hover{
+    background: #1f222f;
+    color: #888585;
+    border:none
+}
+
+.resetPlayerButton {
+    background-color: #f70f07ad;
+    color: cyan;
+    margin-top: 10%;
+    width: 9.4vw;
+}
+
 .showGameButton {
     background-color: #0070cc;
     margin-top: 10%;
