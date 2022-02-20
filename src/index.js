@@ -76,7 +76,7 @@ io.on('connection', (socket) => {
 
     socket.on('hit1', (card) => {
         const user = getUser(socket.id)
-        io.to(user.room).emit('hit', card)
+        io.to(user.room).emit('hit', {card, user})
     })
 
     socket.on('stay1', ({dealerCard, dealerCard2, dealerCard3, dealerCard4, dealerCard5, dealerCard6}) => {

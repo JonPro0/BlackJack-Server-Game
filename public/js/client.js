@@ -152,14 +152,33 @@ resetPlayers.addEventListener('click', () => {
 })
 
 socket.on('resetPlayer', () => {
-    h2Player1.innerHTML = ''
+    h2Player1.innerHTML = 'Player 1'
     bePlayer1.removeAttribute('disabled')
-    h2Player2.innerHTML = ''
+    h2Player2.innerHTML = 'Player 2'
     bePlayer2.removeAttribute('disabled')
-    h2Player3.innerHTML = ''
+    h2Player3.innerHTML = 'Player 3'
     bePlayer3.removeAttribute('disabled')
-    h2Player4.innerHTML = ''
+    h2Player4.innerHTML = 'Player 4'
     bePlayer4.removeAttribute('disabled')
+    startGame.innerHTML = 'Spiel starten!'
+    showResult1.innerHTML = ''
+    player1.innerHTML = ''
+    $playerScore.innerHTML = 'Score: '
+    playerScore = 0
+    player2.innerHTML = ''
+    showResult2.innerHTML = ''
+    $player2Score.innerHTML = 'Score: '
+    player2Score = 0
+    player3.innerHTML = ''
+    showResult3.innerHTML = ''
+    $player3Score.innerHTML = 'Score: '
+    player3Score = 0
+    player4.innerHTML = ''
+    showResult4.innerHTML = ''
+    $player4Score.innerHTML = 'Score: '
+    player4Score = 0
+    loadCardDealer.innerHTML = ''
+    loadCardDealerScore.innerHTML = 'Score: '
 })
 
 
@@ -245,7 +264,11 @@ let isBusted4 = false
 
 startGame.addEventListener('click', () => {
     isPlayable1 = true
-    socket.emit('startGame1')
+    if(h2Player1.innerHTML != 'Player 1' && h2Player2.innerHTML != 'Player 2'){
+        socket.emit('startGame1')
+    } else {
+        startGame.innerHTML = 'Zu wenig Spieler: Benötigte Spieler: 2'
+    }
 })
 
 socket.on('startGame', () => {
@@ -257,8 +280,8 @@ hit.addEventListener('click', () => {
     socket.emit('hit1', card)
 })
 
-socket.on('hit', (card) => {
-    showCreatedCard(card)
+socket.on('hit', ({card, user}) => {
+    showCreatedCard(card, user.username)
 })
 
 stay.addEventListener('click', () => {
@@ -295,15 +318,17 @@ const $startGame = () => {
     isPlayable1 = true
 }
 
-const showCreatedCard = (card) => {
-    if (isPlayable1) {
+const showCreatedCard = (card, name) => {
+    if (isPlayable1 && name == h2Player1.innerHTML) {
         showCreatedCardPlayer1(card)
-    } else if (isPlayable2) {
+    } else if (isPlayable2 && name == h2Player2.innerHTML) {
         showCreatedCardPlayer2(card)
-    } else if (isPlayable3) {
+    } else if (isPlayable3 && name == h2Player3.innerHTML) {
         showCreatedCardPlayer3(card)
-    } else if (isPlayable4) {
+    } else if (isPlayable4 && name == h2Player4.innerHTML) {
         showCreatedCardPlayer4(card)
+    } else {
+        
     }
 }
 
@@ -316,13 +341,23 @@ const $stay = ({dealerCard, dealerCard2, dealerCard3, dealerCard4, dealerCard5, 
     } else if (isPlayable2) {
         showResult2.innerHTML = 'Halten'
         isPlayable2 = false
-        isPlayable3 = true
-        showResult3.innerHTML = 'Player 3 ist dran'
+        if(h2Player3.innerHTML == 'Player 3'){
+            isDealable = true
+            dealerTurn({dealerCard, dealerCard2, dealerCard3, dealerCard4, dealerCard5, dealerCard6})
+        } else {
+            isPlayable3 = true
+            showResult3.innerHTML = 'Player 3 ist dran'
+        }
     } else if (isPlayable3) {
         showResult3.innerHTML = 'Halten'
         isPlayable3 = false
-        isPlayable4 = true
-        showResult4.innerHTML = 'Player 4 ist dran'
+        if(h2Player4.innerHTML == 'Player 4'){
+            isDealable = true
+            dealerTurn({dealerCard, dealerCard2, dealerCard3, dealerCard4, dealerCard5, dealerCard6})
+        } else {
+            isPlayable4 = true
+            showResult4.innerHTML = 'Player 4 ist dran'
+        }
     } else if (isPlayable4) {
         showResult4.innerHTML = 'Halten'
         isPlayable4 = false
@@ -352,8 +387,16 @@ const dealerTurn = ({dealerCard, dealerCard2, dealerCard3, dealerCard4, dealerCa
             if (cardDealerScore >= 17) {
                 checkwin1()
                 checkwin2()
-                checkwin3()
-                checkwin4()
+                if(h2Player3.innerHTML == 'Player 3'){
+                    console.log(true)
+                } else {
+                    checkwin3()
+                    if(h2Player4.innerHTML == 'Player 4'){
+                        console.log(true)
+                    } else {
+                        checkwin4()
+                    }
+                }
             } else {
                 cardDealerScore += cards[dealerCard3].value
                 loadCardDealer.innerHTML += `<img src="${imgSource}${cards[dealerCard3].img}" width="50px" height="70px"/>`
