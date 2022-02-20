@@ -405,47 +405,6 @@ const dealerTurn = ({dealerCard, dealerCard2, dealerCard3, dealerCard4, dealerCa
         }, i * 1000)
         i++
 
-        setTimeout(() => {
-            if (cardDealerScore >= 17) {
-                checkwin1()
-                checkwin2()
-                checkwin3()
-                checkwin4()
-            } else {
-                cardDealerScore += cards[dealerCard4].value
-                loadCardDealer.innerHTML += `<img src="${imgSource}${cards[dealerCard4].img}" width="50px" height="70px"/>`
-                loadCardDealerScore.innerHTML = `Score: ${cardDealerScore}`
-            }
-        }, i * 1000)
-        i++
-
-        setTimeout(() => {
-            if (cardDealerScore >= 17) {
-                checkwin1()
-                checkwin2()
-                checkwin3()
-                checkwin4()
-            } else {
-                cardDealerScore += cards[dealerCard5].value
-                loadCardDealer.innerHTML += `<img src="${imgSource}${cards[dealerCard5].img}" width="50px" height="70px"/>`
-                loadCardDealerScore.innerHTML = `Score: ${cardDealerScore}`
-            }
-        }, i * 1000)
-        i++
-
-        setTimeout(() => {
-            if (cardDealerScore >= 17) {
-                checkwin1()
-                checkwin2()
-                checkwin3()
-                checkwin4()
-            } else {
-                cardDealerScore += cards[dealerCard6].value
-                loadCardDealer.innerHTML += `<img src="${imgSource}${cards[dealerCard6].img}" width="50px" height="70px"/>`
-                loadCardDealerScore.innerHTML = `Score: ${cardDealerScore}`
-            }
-        }, i * 1000)
-
         startGame.innerHTML = 'Restart!'
     }
 }
