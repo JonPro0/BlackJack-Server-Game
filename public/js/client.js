@@ -239,12 +239,7 @@ const cards = [
     { value: 10, word: 'King of Diamond', img: 'KD.png' },
 ]
 
-let dealerCard = Math.round(Math.random() * 51)
-let dealerCard2 = Math.round(Math.random() * 51)
-let dealerCard3 = Math.round(Math.random() * 51)
-let dealerCard4 = Math.round(Math.random() * 51)
-let dealerCard5 = Math.round(Math.random() * 51)
-let dealerCard6 = Math.round(Math.random() * 51)
+
 
 let playerScore = 0
 let player2Score = 0
@@ -285,6 +280,12 @@ socket.on('hit', ({card, user}) => {
 })
 
 stay.addEventListener('click', () => {
+    let dealerCard = Math.round(Math.random() * 51)
+let dealerCard2 = Math.round(Math.random() * 51)
+let dealerCard3 = Math.round(Math.random() * 51)
+let dealerCard4 = Math.round(Math.random() * 51)
+let dealerCard5 = Math.round(Math.random() * 51)
+let dealerCard6 = Math.round(Math.random() * 51)
     socket.emit('stay1', {dealerCard, dealerCard2, dealerCard3, dealerCard4, dealerCard5, dealerCard6})
 })
 
@@ -404,6 +405,70 @@ const dealerTurn = ({dealerCard, dealerCard2, dealerCard3, dealerCard4, dealerCa
             }
         }, i * 1000)
         i++
+        setTimeout(() => {
+            if (cardDealerScore >= 17) {
+                checkwin1()
+                checkwin2()
+                if(h2Player3.innerHTML == 'Player 3'){
+                    console.log(true)
+                } else {
+                    checkwin3()
+                    if(h2Player4.innerHTML == 'Player 4'){
+                        console.log(true)
+                    } else {
+                        checkwin4()
+                    }
+                }
+            } else {
+                cardDealerScore += cards[dealerCard4].value
+                loadCardDealer.innerHTML += `<img src="${imgSource}${cards[dealerCard4].img}" width="50px" height="70px"/>`
+                loadCardDealerScore.innerHTML = `Score: ${cardDealerScore}`
+            }
+        }, i * 1000)
+        i++
+
+        setTimeout(() => {
+            if (cardDealerScore >= 17) {
+                checkwin1()
+                checkwin2()
+                if(h2Player3.innerHTML == 'Player 3'){
+                    console.log(true)
+                } else {
+                    checkwin3()
+                    if(h2Player4.innerHTML == 'Player 4'){
+                        console.log(true)
+                    } else {
+                        checkwin4()
+                    }
+                }
+            } else {
+                cardDealerScore += cards[dealerCard5].value
+                loadCardDealer.innerHTML += `<img src="${imgSource}${cards[dealerCard5].img}" width="50px" height="70px"/>`
+                loadCardDealerScore.innerHTML = `Score: ${cardDealerScore}`
+            }
+        }, i * 1000)
+        i++
+
+        setTimeout(() => {
+            if (cardDealerScore >= 17) {
+                checkwin1()
+                checkwin2()
+                if(h2Player3.innerHTML == 'Player 3'){
+                    console.log(true)
+                } else {
+                    checkwin3()
+                    if(h2Player4.innerHTML == 'Player 4'){
+                        console.log(true)
+                    } else {
+                        checkwin4()
+                    }
+                }
+            } else {
+                cardDealerScore += cards[dealerCard6].value
+                loadCardDealer.innerHTML += `<img src="${imgSource}${cards[dealerCard6].img}" width="50px" height="70px"/>`
+                loadCardDealerScore.innerHTML = `Score: ${cardDealerScore}`
+            }
+        }, i * 1000)
 
         startGame.innerHTML = 'Restart!'
     }
